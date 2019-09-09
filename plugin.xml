@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-musickit"
+        version="0.0.1">
+
+    <name>Cordova Musickit</name>
+
+    <description>Cordova wrapper for Apple Musickit Api</description>
+
+    <keywords>cordova, musickit</keywords>
+
+    <js-module src="www/musickit.js" name="musickit">
+        <clobbers target="musickit"/>
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Musickit" >
+                <param name="android-package" value="org.apache.cordova.musickit.Musickit"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Musickit.java" target-dir="src/org/apache/cordova/musickit" />
+
+        <framework src="src/android/musickit.gradle" custom="true" type="gradleReference" />
+        <framework src="com.android.support:appcompat-v7:26.0.1" />
+
+        <resource-file src="src/android/libs/musickitauth-release-1.0.0.aar" target="libs/musickitauth-release-1.0.0.aar"/>
+    </platform>
+</plugin>

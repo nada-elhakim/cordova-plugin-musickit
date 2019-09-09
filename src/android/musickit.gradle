@@ -1,0 +1,18 @@
+repositories {
+    jcenter()
+    flatDir {
+        dirs 'libs', 'src/main/libs'
+    }
+}
+
+dependencies {
+    implementation(name:'musickitauth-release-1.0.0', ext:'aar')
+}
+
+
+android {
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}
