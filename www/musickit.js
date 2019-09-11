@@ -1,12 +1,23 @@
 var exec = require('cordova/exec');
-var cordova = require('cordova');
 
 function Musickit() {
 
 }
 
-Musickit.prototype.authorize = function (developerToken, authorizationMessage, successCallback, errorCallback) {
-    exec(successCallback, errorCallback, 'Musickit', 'authorize', [developerToken, authorizationMessage]);
+Musickit.prototype.requestAuthorizationForAndroid = function (developerToken, authorizationMessage, successCallback, errorCallback) {
+    exec(successCallback, errorCallback, 'CordovaMusickit', 'authorize', [developerToken, authorizationMessage]);
+};
+
+Musickit.prototype.requestAuthorizationForIOS = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "CordovaMusickit", "requestAuthorization", []);
+};
+
+Musickit.prototype.requestUserToken = function(developerToken, successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "CordovaMusickit", "requestUserToken", []);
+};
+
+Musickit.prototype.getStatus = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "CordovaMusickit", "getStatus", []);
 };
 
 module.exports = new Musickit();

@@ -19,7 +19,7 @@ import com.apple.android.sdk.authentication.TokenResult;
 import java.util.HashMap;
 
 
-public class Musickit extends CordovaPlugin {
+public class CordovaMusickit extends CordovaPlugin {
     private AuthenticationManager authenticationManager;
     private static final int REQUESTCODE_APPLEMUSIC_AUTH = 3456;
     private CallbackContext loginContext = null;

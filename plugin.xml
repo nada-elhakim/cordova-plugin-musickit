@@ -10,23 +10,41 @@
 
     <keywords>cordova, musickit</keywords>
 
-    <js-module src="www/musickit.js" name="musickit">
-        <clobbers target="musickit"/>
+    <js-module src="www/musickit.js" name="cordovaMusickit">
+        <clobbers target="cordovaMusickit"/>
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Musickit" >
-                <param name="android-package" value="org.apache.cordova.musickit.Musickit"/>
+            <feature name="CordovaMusickit" >
+                <param name="android-package" value="org.apache.cordova.musickit.CordovaMusickit"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/Musickit.java" target-dir="src/org/apache/cordova/musickit" />
+        <source-file src="src/android/CordovaMusickit.java" target-dir="src/org/apache/cordova/musickit" />
 
         <framework src="src/android/musickit.gradle" custom="true" type="gradleReference" />
-        <framework src="com.android.support:appcompat-v7:26.0.1" />
+        <framework src="com.android.support:appcompat-v7:28.0.0" />
+        <framework src="com.android.support:support-media-compat:28.0.0" />
+        <framework src="com.android.support:design:28.0.0" />
 
         <resource-file src="src/android/libs/musickitauth-release-1.0.0.aar" target="libs/musickitauth-release-1.0.0.aar"/>
+        <resource-file src="src/android/libs/mediaplayback-release-1.0.0.aar" target="libs/mediaplayback-release-1.0.0.aar"/>
+    </platform>
+
+    <!-- android -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/widget">
+            <feature name="CordovaMusickit">
+                <param name="ios-package" value="CordovaMusickit"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSAppleMusicUsageDescription">
+            <string>Allow access to your Music Library.</string>
+        </config-file>
+        <header-file src="src/ios/CordovaMusickit.h"/>
+        <source-file src="src/ios/CordovaMusickit.m"/>
     </platform>
 </plugin>

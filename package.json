@@ -1,11 +1,12 @@
 {
   "name": "cordova-plugin-musickit",
   "version": "0.0.1",
-  "description": "Cordova wrapper for Apple Musickit Api",
+  "description": "Cordova wrapper for Apple Musickit",
   "cordova": {
     "id": "cordova-plugin-musickit",
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
