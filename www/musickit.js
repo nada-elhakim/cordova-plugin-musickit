@@ -13,7 +13,7 @@ Musickit.prototype.requestAuthorizationForIOS = function(successCallback, errorC
 };
 
 Musickit.prototype.requestUserToken = function(developerToken, successCallback, errorCallback) {
-    exec(successCallback, errorCallback, "CordovaMusickit", "requestUserToken", []);
+    exec(successCallback, errorCallback, "CordovaMusickit", "requestUserToken", [developerToken]);
 };
 
 Musickit.prototype.getStatus = function(successCallback, errorCallback) {

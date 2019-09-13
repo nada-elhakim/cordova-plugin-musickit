@@ -46,9 +46,14 @@
     NSString* developerToken = [command.arguments objectAtIndex:0];
     SKCloudServiceController *cloudServiceController = [[SKCloudServiceController alloc] init];
     [cloudServiceController requestUserTokenForDeveloperToken:developerToken completionHandler: ^(NSString * userToken, NSError * _Nullable error) {
-                CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userToken];
-                [self.commandDelegate sendPluginResult:result callbackId:callbackId];
-            }];
+        CDVPluginResult* pluginResult = nil;
+        if (error) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"There was a problem logging you in."];
+        } else {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userToken];
+        }
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+    }];
 }
 
 -(void)getCountryCode:(CDVInvokedUrlCommand*)command
