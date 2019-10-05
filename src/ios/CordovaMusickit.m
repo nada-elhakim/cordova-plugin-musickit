@@ -43,8 +43,8 @@
 - (void)requestAuthorization:(CDVInvokedUrlCommand*)command
 {
     NSString* callbackId = [command callbackId];
+    SKCloudServiceController *cloudServiceController = [[SKCloudServiceController alloc] init];
     [SKCloudServiceController requestAuthorization:^(SKCloudServiceAuthorizationStatus status) {
-        SKCloudServiceController *cloudServiceController = [[SKCloudServiceController alloc] init];
         [cloudServiceController requestCapabilitiesWithCompletionHandler:^(SKCloudServiceCapability capabilities, NSError * _Nullable error) {
             bool isCapable = (capabilities >= SKCloudServiceCapabilityMusicCatalogPlayback);
             CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:isCapable];
